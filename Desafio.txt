@@ -1,0 +1,60 @@
+##  Tecnologias
+Neste projeto, você vai construir um pequeno sistema usando a stack moderna que utilizamos:
+* *Backend:* [Nest.js](https://nestjs.com/) (Node.js)
+* *Banco de Dados:* Qualquer banco relacional (Postgres, MySQL ou SQLite) usando *TypeORM*.
+* *Frontend:* [Angular](https://angular.io/) (Versão 21 - queremos ver você tentando usar as novidades!).
+
+=========================================================================================
+##  O Objetivo
+Você deve criar um *Gerenciador de Produtos*. Imagine que é um sistema para um pequeno estoque onde apenas funcionários logados podem mexer nos dados.
+### Parte 1: O Backend (API)
+Precisamos de uma API simples. Não se preocupe com arquiteturas complexas (Clean Arch, DDD), foque no padrão MVC/Services do próprio NestJS.
+*1. Banco de Dados (Entidades)*
+Crie duas tabelas simples:
+* *User:* id, email, senha (dica: salve a senha criptografada).
+* *Product:* id, nome, preco, descricao.
+*2. Autenticação (Login)*
+* Crie uma rota /login.
+* O usuário envia email/senha e recebe um *Token JWT*.
+* Use a biblioteca @nestjs/jwt e passport. É o padrão do mercado.
+*3. CRUD de Produtos*
+* Rotas para: Criar, Editar, Listar e Deletar produtos.
+* *Regra Importante:* Essas rotas só podem ser acessadas se o usuário enviar o Token JWT no cabeçalho.
+*4. Paginação (O Desafio de Lógica)*
+Na rota de listar produtos (GET /products), não devolva tudo de uma vez. O Frontend vai pedir por partes.
+* Receba os parâmetros page (página) e limit (quantos itens por página).
+* Dica de Ouro: No TypeORM, use as opções .take (limite) e .skip (pular) do findAndCount.
+    * take = limit
+    * skip = (page - 1) * limit
+
+=========================================================================================
+##  Parte 2: O Frontend (Angular 21)
+Aqui queremos ver você construindo as telas. Não precisa ser um designer profissional! Pode usar bibliotecas prontas (Angular Material, Bootstrap, Tailwind) para facilitar.
+*1. Tela de Login*
+* Dois campos (email/senha) e um botão.
+* Ao logar, salve o token (pode ser no LocalStorage) e mande o usuário para a lista de produtos.
+*2. Lista de Produtos (Com Paginação)*
+* Exiba os produtos em uma tabela ou lista.
+* *O Pulo do Gato:* Crie botões de "Anterior" e "Próximo". Ao clicar neles, você deve chamar a API novamente pedindo a nova página (Ex: página 1, depois página 2). Evite carregar 1000 produtos de uma vez!
+*3. Criar/Editar Produto*
+* Um formulário simples.
+* Use as validações do Angular (ex: campo obrigatório, preço deve ser maior que zero).
+* Bônus (Tente usar se conseguir):*
+O Angular 21 traz funcionalidades novas e legais. Se conseguir usar *Signals* para controlar o estado da lista ou *Standalone Components* (sem NgModules), vai contar muitos pontos!
+
+=========================================================================================
+##  O que vamos avaliar?
+Para um nível júnior, olhamos para:
+1.  *Organização:* Seu código está fácil de ler? As variáveis têm nomes em inglês ou português (padrão mantido)?
+2.  *Funcionalidade:* O login funciona? A paginação funciona?
+3.  *Git:* Seus commits contam uma história? (Evite um único commit com "Projeto pronto").
+4.  *Aprendizado:* Se você não conseguiu fazer algo, explicou o porquê?
+
+=========================================================================================
+##  Como entregar
+1.  Crie um repositório público no GitHub.
+2.  Crie um arquivo README.md. *Isso é muito importante!* Nele, coloque:
+    * Como rodar seu projeto (passo a passo).
+    * Quais dificuldades você teve.
+    * O que você aprendeu fazendo esse teste.
+=========================================================================================
