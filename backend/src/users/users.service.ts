@@ -6,6 +6,11 @@ import { User } from './user.entity';
 
 @Injectable()
 export class UsersService {
+	async findByEmail(email: string) {
+  return this.repo.findOne({
+    where: { email },
+  });
+}
 	constructor(
 		@InjectRepository(User)
 		private readonly repo: Repository<User>,
