@@ -1,7 +1,11 @@
-nstalar o Node.js,tanto Angular quanto NestJS dependem do Node.
+instalar o Node.js,tanto Angular quanto NestJS dependem do Node.
 Instale Node.js LTS Site oficial:
 https://nodejs.org
+
 Depois confirme no terminal:
+
+winget install OpenJS.NodeJS.LTS
+
 node -v
 npm -v
 
