@@ -7,8 +7,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
+<<<<<<< HEAD
   imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
+=======
+  imports: [FormsModule],
+  templateUrl: './login.component.html',
+  styleUrls:['./login.component.css']
+>>>>>>> 8d7e0ca6fda0d7382e3dd0fd96abf071f9c11f38
 })
 export class LoginComponent {
   email = '';
