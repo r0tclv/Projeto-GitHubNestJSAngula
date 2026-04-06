@@ -1,21 +1,24 @@
-<form (ngSubmit)="login()">
+<div class="login-wrapper">
+  <form class="login-card" (ngSubmit)="login()">
+    <h2>Login</h2>
+    <p class="subtitle">Acesse o gerenciador de produtos</p>
 
-  <input 
-    type="email"
-    [(ngModel)]="email"
-    name="email"
-    required
-  />
+    @if (error()) {
+      <div class="error">{{ error() }}</div>
+    }
 
-  <input
-    type="password"
-    [(ngModel)]="password"
-    name="password"
-    required
-  />
+    <div class="field">
+      <label>E-mail</label>
+      <input type="email" [(ngModel)]="email" name="email" placeholder="seu@email.com" />
+    </div>
 
-  <button type="submit">
-    Login
-  </button>
+    <div class="field">
+      <label>Senha</label>
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Sua senha" />
+    </div>
 
-</form>
+    <button type="submit" class="btn btn-primary" [disabled]="loading()">
+      @if (loading()) { Entrando... } @else { Entrar }
+    </button>
+  </form>
+</div>

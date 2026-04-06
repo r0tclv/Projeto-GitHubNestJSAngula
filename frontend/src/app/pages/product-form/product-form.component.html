@@ -1,0 +1,31 @@
+<div class="modal-overlay" (click)="cancel()">
+  <div class="modal-card" (click)="$event.stopPropagation()">
+    <h2>{{ isEditing ? 'Editar' : 'Novo' }} Produto</h2>
+
+    @if (error) {
+      <div class="error">{{ error }}</div>
+    }
+
+    <div class="field">
+      <label>Nome</label>
+      <input type="text" [(ngModel)]="name" placeholder="Nome do produto" />
+    </div>
+
+    <div class="field">
+      <label>Preço (R$)</label>
+      <input type="number" [(ngModel)]="price" placeholder="0.00" step="0.01" min="0.01" />
+    </div>
+
+    <div class="field">
+      <label>Descrição</label>
+      <textarea [(ngModel)]="description" placeholder="Descreva o produto"></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn" (click)="cancel()">Cancelar</button>
+      <button class="btn btn-primary" [disabled]="loading" (click)="save()">
+        {{ isEditing ? 'Salvar' : 'Criar' }}
+      </button>
+    </div>
+  </div>
+</div>

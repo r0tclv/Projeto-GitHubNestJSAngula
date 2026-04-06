@@ -7,16 +7,16 @@ import {
   Param,
   Put,
   Delete,
-  UseGuards
+  UseGuards,
 } from '@nestjs/common';
 
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('products')
 export class ProductsController {
-
   constructor(private readonly productsService: ProductsService) {}
 
   @Post()
@@ -25,7 +25,6 @@ export class ProductsController {
   }
 
   @Get()
-  @UseGuards(JwtAuthGuard)
   findAll(
     @Query('page') page = 1,
     @Query('limit') limit = 10,
@@ -39,10 +38,7 @@ export class ProductsController {
   }
 
   @Put(':id')
-  update(
-    @Param('id') id: number,
-    @Body() dto: CreateProductDto,
-  ) {
+  update(@Param('id') id: number, @Body() dto: CreateProductDto) {
     return this.productsService.update(Number(id), dto);
   }
 

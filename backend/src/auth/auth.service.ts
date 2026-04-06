@@ -13,12 +13,10 @@ export class AuthService {
   ) {}
 
   async validateUser(email: string, pass: string) {
-
     const user = await this.usersService.findByEmail(email);
     if (user && await bcrypt.compare(pass, user.password)) {
       return user;
     }
-
     throw new UnauthorizedException();
   }
 
@@ -27,6 +25,10 @@ export class AuthService {
     return {
       access_token: this.jwtService.sign(payload),
     };
+  }
+
+  async register(email: string, password: string) {
+    return this.usersService.create(email, password);
   }
 
 }

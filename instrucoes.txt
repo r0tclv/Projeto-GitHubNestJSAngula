@@ -1,0 +1,128 @@
+================================================================================
+              GERENCIADOR DE PRODUTOS - Angular + NestJS
+================================================================================
+TECNOLOGIAS UTILIZADAS:
+- Backend: NestJS (Node.js) com TypeScript
+- Banco de Dados: SQLite com TypeORM
+- Frontend: Angular 21 (Standalone Components + Signals)
+- Autenticacao: JWT com Passport.js / bcrypt
+================================================================================
+                         COMO RODAR O PROJETO
+================================================================================
+1. PRE-REQUISITOS
+   - Node.js instalado (versao 18+)
+   - npm instalado
+   - Nao precisa de banco de dados externo (usa SQLite)
+================================================================================
+2. BACKEND (NestJS)
+
+   Abra o terminal e acesse a pasta do backend:
+
+       cd C:\Projeto\Projeto-AngulaNest\backend
+
+   a) Instalar as dependencias:
+
+       npm install
+
+   b) Iniciar o servidor (modo desenvolvimento):
+
+       npm start
+
+   O backend vai rodar em: http://localhost:3000
+================================================================================
+3. FRONTEND (Angular)
+
+   Abra OUTRO terminal e acesse a pasta do frontend:
+
+       cd C:\Projeto\Projeto-AngulaNest\frontend
+
+   a) Instalar as dependencias:
+
+       npm install
+
+   b) Iniciar a aplicacao:
+
+       npm start
+
+   O frontend vai rodar em: http://localhost:4200
+===============================================================================
+4. PRIMEIRO ACESSO
+
+   Antes de usar o sistema, voce precisa criar uma conta.
+   Abra um terceiro terminal e rode:
+
+       curl -X POST http://localhost:3000/auth/register ^
+       -H "Content-Type: application/json" ^
+       -d "{\"email\":\"seu@email.com\",\"password\":\"sua-senha\"}"
+
+   Ou use o Postman/Insomnia:
+       POST http://localhost:3000/auth/register
+       Body (JSON): { "email": "seu@email.com", "password": "sua-senha" }
+
+   Depois de criado, faca login na tela do frontend com mesmo email/senha.
+================================================================================
+                         BIBLIOTECAS DO BACKEND
+================================================================================
+   Dependencias principais (ja instaladas no package.json):
+
+   @nestjs/common          - Modulos base do NestJS
+   @nestjs/core            - Core do framework
+   @nestjs/jwt             - Geracao de tokens JWT
+   @nestjs/passport        - Integracao com Passport.js
+   @nestjs/typeorm         - Integracao TypeORM com NestJS
+   @nestjs/platform-express - Servidor Express
+   bcrypt                  - Criptografia de senhas
+   class-validator         - Validacao de DTOs
+   class-transformer       - Transformacao de dados
+   passport                - Autenticacao
+   passport-jwt            - Strategy JWT do Passport
+   sqlite3                 - Driver do banco SQLite
+   typeorm                 - ORM para banco de dados
+   rxjs                    - Programacao reativa
+
+   Para adicionar uma nova dependencia no futuro:
+
+       cd C:\Projeto\Projeto-AngulaNest\backend
+       npm install <nome-da-biblioteca>
+================================================================================
+                         BIBLIOTECAS DO FRONTEND
+================================================================================
+   Dependencias principais (ja instaladas no package.json):
+
+   @angular/common         - Modulos comuns do Angular
+   @angular/compiler       - Compilador Angular
+   @angular/core           - Core do Angular
+   @angular/forms          - Formularios (FormsModule)
+   @angular/router         - Roteamento
+   @angular/platform-browser - Suporte ao navegador
+   rxjs                    - Programacao reativa
+   zone.js                 - Deteccao de mudancas
+
+   Para adicionar uma nova dependencia no futuro:
+
+       cd C:\Projeto\Projeto-AngulaNest\frontend
+       npm install <nome-da-biblioteca>
+================================================================================
+                         ESTRUTURA DO PROJETO
+================================================================================
+Projeto-AngulaNest/
+  |-- backend/
+  |     |-- src/
+  |     |     |-- auth/           (Login, JWT, Passport)
+  |     |     |-- products/       (CRUD de produtos)
+  |     |     |-- users/          (Cadastro de usuarios)
+  |     |     |-- app.module.ts   (Configuracao principal)
+  |     |     |-- main.ts         (Ponto de entrada)
+  |     |-- data.db               (Banco SQLite - gerado automaticamente)
+  |
+  |-- frontend/
+  |     |-- src/app/
+  |     |     |-- core/           (Servicos, guards, interceptors)
+  |     |     |-- pages/          (Telas: login, produtos, formulario)
+  |     |     |-- app.routes.ts   (Rotas)
+  |     |     |-- app.config.ts   (Configuracao da app)
+  |
+  |-- Desafio.txt                 (Descricao do desafio)
+  |-- README.md                   (Readme original)
+  |-- instrucoes.txt              (Este arquivo)
+================================================================================
